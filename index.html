@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAFFIC LIGHT</title>
+<style>
+    .traffic_light{
+        width: 100px;
+        height: 300px;
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+        margin-top: 50px;
+    }
+    .light{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin:10px;
+    }
+    .red{
+        background-color:red ;
+    }
+    .yellow{
+        background-color: yellow;
+    }
+    .green{
+        background-color: green;
+    }
+</style>
+</head>
+<body>
+    <div class="traffic_light">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+    </div>
+    <script>
+        const redLight=document.querySelector('.red');
+                const yellowLight=document.querySelector('.yellow');
+                        const greenLight=document.querySelector('.green');
+
+                        function changeLights(){
+                            setTimeout(() =>{
+                                redLight.style.backgroundColor='red';
+                                yellowLight.style.backgroundColor='transparent';
+                                greenLight.style.backgroundColor='transparent';
+
+                                setTimeout(()=>{
+                                redLight.style.backgroundColor='transparent';
+                                yellowLight.style.backgroundColor='yellow';
+                                greenLight.style.backgroundColor='transparent';
+
+                                setTimeout(()=>{
+                                redLight.style.backgroundColor='transparent';
+                                yellowLight.style.backgroundColor='transparent';
+                                greenLight.style.backgroundColor='green';
+                                changeLights();//recursive calll to keep thr cyce ging on
+                            },2000);// it means 2 sec of time interval
+                        },2000);
+                    },2000);
+                }
+                changeLights();//start the cycle
+
+        </script>
+</body>
+</html>
